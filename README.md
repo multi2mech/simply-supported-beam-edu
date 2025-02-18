@@ -52,7 +52,7 @@ Two mathematical segments between \[`0`,`ratio*length`\] and \[`ratio*length`,`l
     ```
 ---
 
-The output is the image [plot.png](https://github.com/multi2mech/simply-supported-beam-edu/blob/6bd93d1dc326fb14b590996f13b45fdf164d1615/plot.png), like the following one as well as text output in the console:
+The output is the image [plot.png](plot.png), like the following one as well as text output in the console:
 
 ```text
 Solution found!
@@ -61,7 +61,7 @@ Segment 1 from z: 0 to z: 5, coefficients: c1 = 8.00E+002, c2 = -0.00E+000, c3 =
 Segment 2 from z: 5 to z: 10, coefficients: c1 = -8.00E+002, c2 = 4.00E+003, c3 = 6.67E+003, c4 = 0.00E+000, c5 = -0.00E+000, c6 = -0.00E+000
 ```
 
-<img src="https://github.com/multi2mech/simply-supported-beam-edu/blob/6bd93d1dc326fb14b590996f13b45fdf164d1615/plot.png" width="250px" height="auto" />
+<img src="https://github.com/multi2mech/simply-supported-beam-edu/blob/8b3dbf661a29318e85fbebf8662967540b54990e/plot.png" width="250px" height="auto" />
 
 
 ## Application
