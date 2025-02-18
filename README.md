@@ -1,8 +1,13 @@
-# simply-supported-beam-edu
+# Simply supported beam
 
-XXX
+### University of Rome Tor Vergata 
+### [Multi2mech](www.multi2mech.com)
 
-$`\sqrt{3x-1}+(1+x)^2`$
+Educational project to investigate the deformation of a simply supported beam under an imposed loading condition.
+
+This project lays the foundation for applying structural mechanics and Euler-Bernoulli beam theory in an augmented reality application (e.g., Unity), which is why it uses C#.
+
+$`{d^2over dz^2}\left(EI{d^2v\over dz^2}\right)=q`$
 
 ## How to Run
 
@@ -26,3 +31,9 @@ dotnet build
 ```bash    
     dotnet run
 ```
+
+## Application
+
+The project is easily extendable to any beam, constraint, or loading condition by simply modifying the matrix and solution vector. Remember to group the coefficients into sets of six (c1 to c6) for each mathematical segment—these coefficients are derived from beam theory by integrating the governing equation four times.
+
+The plotting is automatic; you only need to specify the values for E, I, and A. The coefficients are automatically grouped in sets of six, and you must also provide the sequence of z-coordinates at which the segments are interrupted. See the example for details.
