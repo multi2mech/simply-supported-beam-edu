@@ -9,6 +9,10 @@ This project lays the foundation for applying structural mechanics and Euler-Ber
 
 $`{d^2\over dz^2}\left(EI{d^2v\over dz^2}\right)=q`$
 
+![Beam](https://github.com/multi2mech/simply-supported-beam-edu/blob/9b54f5899f587631d48e46bd03442c58cc8505df/extra/beam.gif)
+
+
+
 ## How to Run
 
 1. Clone the repository:
