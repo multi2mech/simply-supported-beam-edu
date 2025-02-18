@@ -24,14 +24,21 @@ public class PlotHelper
         multiplot.AddPlot(T); // add the shear force plot to the multiplot
         multiplot.AddPlot(M); // add the bending moment plot to the multiplot
 
-        string imagePath = "plot.png"; // path to save the image
+        // string imagePath = "plot.png"; // path to save the image
+        var baseDirectory = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory);
+        if (baseDirectory == null || baseDirectory.Parent == null || baseDirectory.Parent.Parent == null)
+        {
+            throw new InvalidOperationException("Unable to determine the project root directory.");
+        }
+        string projectRoot = baseDirectory.Parent.Parent.FullName;
+        string imagePath = Path.Combine(projectRoot, "plot.png");
         multiplot.SavePng(imagePath, 600, 1200); // save the image
         OpenImage(imagePath); // open the image
     }
 
     public static void OpenImage(string imagePath){
         Console.WriteLine();
-        Console.WriteLine($"Immagine generata nel file: {imagePath}");
+        Console.WriteLine($"Plot save in: {imagePath}");
         Process.Start(new ProcessStartInfo
         {
             FileName = Path.GetFullPath(imagePath),
