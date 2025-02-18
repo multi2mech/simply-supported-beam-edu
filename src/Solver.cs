@@ -6,8 +6,8 @@ public static class MatrixSolver
 {
     public static double[] Solve(double[,] matrix, double[] vector)
     {
-
-        Console.WriteLine("M2M beam solver");
+        Console.WriteLine("--------------------------------------------- ");
+        Console.WriteLine("             M2M beam solver");
         Console.WriteLine("--------------------------------------------- ");
         // Print the matrix
         Console.WriteLine("");
@@ -19,8 +19,6 @@ public static class MatrixSolver
             {
                 Console.Write($"{matrix[i, j],10:E2} "); // Use scientific notation for clarity
             }
-            //Console.Write(" | ");
-            //Console.Write($"{vector[i]:E2}");
             Console.WriteLine();
         }
         Console.WriteLine("");

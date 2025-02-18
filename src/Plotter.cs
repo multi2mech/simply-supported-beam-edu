@@ -11,28 +11,23 @@ public class PlotHelper
     public static void PlotBeamFunction(List<ResultsGroup> groups)
     {
         
-        ScottPlot.Multiplot multiplot = new();
-        double dx = 0.1;
+        ScottPlot.Multiplot multiplot = new(); // start a new multiplot
+        double dx = 0.1; // resolution of the plot
         
-        ScottPlot.Plot displacement  = PlotDisplacement( groups, dx);
-        ScottPlot.Plot N  = PlotN( groups, dx);
-         
-        ScottPlot.Plot T  = PlotT( groups, dx);
-        ScottPlot.Plot M  = PlotM( groups, dx);
+        ScottPlot.Plot displacement  = PlotDisplacement( groups, dx); // prepare the displacement plot
+        ScottPlot.Plot N  = PlotN( groups, dx); // prepare the axial force plot
+        ScottPlot.Plot T  = PlotT( groups, dx); // prepare the shear force plot
+        ScottPlot.Plot M  = PlotM( groups, dx); // prepare the bending moment plot
         
-        
-        multiplot.AddPlot(displacement);
-        multiplot.AddPlot(N);
-        multiplot.AddPlot(T);
-        multiplot.AddPlot(M);
+        multiplot.AddPlot(displacement); // add the displacement plot to the multiplot
+        multiplot.AddPlot(N); // add the axial force plot to the multiplot
+        multiplot.AddPlot(T); // add the shear force plot to the multiplot
+        multiplot.AddPlot(M); // add the bending moment plot to the multiplot
 
-        // Save plot as PNG
-        string imagePath = "plot.png";
-        multiplot.SavePng(imagePath, 600, 1200);
-        OpenImage(imagePath);
-        
-        
-        }
+        string imagePath = "plot.png"; // path to save the image
+        multiplot.SavePng(imagePath, 600, 1200); // save the image
+        OpenImage(imagePath); // open the image
+    }
 
     public static void OpenImage(string imagePath){
         Console.WriteLine();
@@ -43,24 +38,31 @@ public class PlotHelper
             UseShellExecute = true
         });
     }
+    
     public static ScottPlot.Plot PlotDisplacement(List<ResultsGroup> groups, double dx)
-    {
+    {   
+        // function to plot the displacement make use of the GeneratePlot function
+        // the function is called with the specific logic for the displacement
+        // it also add some customization to the plot
         return GeneratePlot(
-        groups,
-        dx,
-        computeY: (x, group) => v(x, group), // Specific logic for M
-        title : "v",
-        yLabel : "v(z)",
-        lineColor : Colors.Navy,
-        InvertedYAxisQ : true,
-        FillQ : false,
-        computeX: (x, group) => w(x, group)
-        );
+            groups,
+            dx,
+            computeY: (x, group) => v(x, group), // Specific logic for M
+            title : "v",
+            yLabel : "v(z)",
+            lineColor : Colors.Navy,
+            InvertedYAxisQ : true,
+            FillQ : false,
+            computeX: (x, group) => w(x, group)
+            );
 
         }
 
     public static ScottPlot.Plot PlotM(List<ResultsGroup> groups, double dx)
     {
+        // function to plot the bending moment make use of the GeneratePlot function
+        // the function is called with the specific logic for the bending moment
+        // it also add some customization to the plot
         return GeneratePlot(
             groups,
             dx,
@@ -75,6 +77,9 @@ public class PlotHelper
 
     public static ScottPlot.Plot PlotT(List<ResultsGroup> groups, double dx)
     {
+        // function to plot the shear force make use of the GeneratePlot function
+        // the function is called with the specific logic for the shear force
+        // it also add some customization to the plot
         return GeneratePlot(
             groups,
             dx,
@@ -88,6 +93,9 @@ public class PlotHelper
 
     public static ScottPlot.Plot PlotN(List<ResultsGroup> groups, double dx)
     {
+        // function to plot the axial force make use of the GeneratePlot function
+        // the function is called with the specific logic for the axial force
+        // it also add some customization to the plot
         return GeneratePlot(
             groups,
             dx,
@@ -99,6 +107,8 @@ public class PlotHelper
             InvertedYAxisQ : false);
     }
 
+    // Function to generate a plot
+    // it takes as input the groups of results, the resolution of the plot, the logic to compute the Y values
     public static ScottPlot.Plot GeneratePlot(
         List<ResultsGroup> groups,
         double dx,
@@ -110,9 +120,10 @@ public class PlotHelper
         bool FillQ,
         Func<double, ResultsGroup, double>? computeX = null // Optional delegate for X computation
         )
+    
     {
         ScottPlot.Plot plot = new();
-
+        // initialize the min and max values for the axes
         double minX = 0;
         double maxX = 0;
         double maxY = 0;
@@ -123,25 +134,25 @@ public class PlotHelper
 
         foreach (var group in groups)
         {
-            maxX = group.ZEnd - group.ZStart;
-            int nPoints = (int)((maxX - minX) / dx) + 1;
-            double[] dataX = new double[nPoints];
-            double[] dataY = new double[nPoints];
-            double[] dataY_Zero = new double[nPoints];
+            maxX = group.ZEnd - group.ZStart; // compute the length of the segment
+            int nPoints = (int)((maxX - minX) / dx) + 1; // compute the number of points
+            double[] dataX = new double[nPoints]; // initialize the x values
+            double[] dataY = new double[nPoints]; // initialize the y values
+            double[] dataY_Zero = new double[nPoints]; // initialize the y zero-values
 
             for (int i = 0; i < nPoints; i++)
             {
                 dataX[i] = i * dx; // x values
-                dataY[i] = computeY(dataX[i], group); // Use the provided computation logic
-                dataX[i] += group.ZStart; // Translate x values with respect to each segment
-                // Apply computeX if provided
+                dataY[i] = computeY(dataX[i], group); // use the provided computation logic
+                dataX[i] += group.ZStart; // translate x values with respect to each segment
+                // apply computeX if provided
                 if (computeX != null)
                 {
                     dataX[i] += computeX(dataX[i], group); // Adjust x values based on computeX
                 }
                 dataY_Zero[i] = 0;
             }
-
+            // the following code set max and min values for the axes
             maxY = dataY.Max();
             minY = dataY.Min();
             if (minY >= 0 - 0.1*maxY)
@@ -153,7 +164,7 @@ public class PlotHelper
                 maxY = 0.1*Math.Abs(maxY);
             }
 
-            // Add scatter plot with specified line style and colors
+            // add scatter plot with specified line style and colors
             plot.Add.Scatter(dataX, dataY_Zero, Colors.Gray);
             var scatterPlot = plot.Add.Scatter(dataX, dataY, lineColor);
             if (FillQ){
@@ -165,11 +176,11 @@ public class PlotHelper
             max_yAxis = Math.Max(max_yAxis, maxY);
             min_yAxis = Math.Min(min_yAxis, minY);
         }
-
+        // increase the max and min values for the axes to have a better visualization
         min_yAxis = 1.05*min_yAxis;
         max_yAxis = 1.05*max_yAxis;
         
-        // Customize axes
+        // customize axes
         plot.Axes.Right.FrameLineStyle.Width = 0;
         plot.Axes.Top.FrameLineStyle.Width = 0;
         if (InvertedYAxisQ) {
@@ -180,9 +191,8 @@ public class PlotHelper
         }
         
         plot.Axes.SetupMultiplierNotation(plot.Axes.Left);
-        //plot.Axes.SetupMultiplierNotation(plot.Axes.Bottom);
-        
-        // Add titles and labels
+
+        // add titles and labels
         plot.Title(title);
         plot.XLabel("z");
         plot.YLabel(yLabel);
@@ -190,34 +200,27 @@ public class PlotHelper
         return plot;
     }
     
+    // vertical displacement function
     public static double v(double x, ResultsGroup group)
     {
         double c1 = group.c1;
         double c2 = group.c2;
         double c3 = group.c3;
         double c4 = group.c4;
-        double c5 = group.c5;
-        double c6 = group.c6;
-
         double E = group.E;
         double I = group.I;
-        double A = group.A;
         double qIIIInt = group.qIIIInt;
         // Example computation using E and I
         return (1/(E*I)) * (qIIIInt + c1*Math.Pow(x, 3) / 6 + c2*Math.Pow(x, 2) / 3 + c3*x +c4);
     }
 
+    // horizontal displacement function
     public static double w(double x, ResultsGroup group)
     {
-        double c1 = group.c1;
-        double c2 = group.c2;
-        double c3 = group.c3;
-        double c4 = group.c4;
+
         double c5 = group.c5;
         double c6 = group.c6;
-
         double E = group.E;
-        double I = group.I;
         double A = group.A;
         double qIIIInt = group.qIIIInt;
         double pIInt = group.pIInt;
@@ -225,16 +228,17 @@ public class PlotHelper
         return -(1/(E*A)) * (pIInt + c5*x + c6);
     }
 
+    // bending moment function
     public static double M(double x, ResultsGroup group)
     {
         double c1 = group.c1;
         double c2 = group.c2;
-
         double qIInt = group.qIInt;
         // Example computation using E and I
         return -  (qIInt + c1*x + c2);
     }
 
+    // shear force function
     public static double T(double x, ResultsGroup group)
     {
         double c1 = group.c1;
@@ -243,6 +247,7 @@ public class PlotHelper
         return -  (qInt + c1);
     }
 
+    // axial force function
     public static double N(double x, ResultsGroup group)
     {
         double c5 = group.c5;
@@ -251,9 +256,9 @@ public class PlotHelper
         return -  (pInt + c5);
     }
 
-
-
-
+    // class to store the results of the solution
+    // it allows to group each segment by its 6 coefficients
+    // and the initial and final position
     public class ResultsGroup
     {
         public double[] Coefficients { get; set; } // The list of coefficients for this group
@@ -298,15 +303,17 @@ public class PlotHelper
         }
     }
 
+    // function to split the global solution in groups
+    // each group is a segment of the beam
     public static List<ResultsGroup> GetSolutionGroups(double[] solution, double[] z_list, double E, double I, double A)
     {
         if (solution == null || solution.Length == 0)
             throw new ArgumentException("Segments cannot be null or empty.", nameof(solution));
-
        
         List<ResultsGroup> groups = new List<ResultsGroup>();
         int groupSize = 6;
         int noGroupd = solution.Length / groupSize;
+        // split each segment in a group
         for (int i = 0; i < noGroupd; i++)
         {
             // Extract coefficients for the current segment
@@ -315,7 +322,7 @@ public class PlotHelper
                 .Take(groupSize)
                 .ToArray();
 
-            // Create a group using segment's InitialPosition and FinalPosition
+            // create the new group and add it to the list
             var group = new ResultsGroup(coefficients, z_list[i], z_list[i+1], E, I, A);
             groups.Add(group);
         }
@@ -323,13 +330,20 @@ public class PlotHelper
         Console.WriteLine("Solution found!");
         Console.WriteLine(" ");
 
+        int k = 0;
         foreach (var group in groups)
         {
-            // Print the solution vector
-            
-            Console.WriteLine($"Da z: {group.ZStart} a z: {group.ZEnd}, coefficienti: {string.Join(", ", group.Coefficients)}");
-            //Console.WriteLine($"zStart: {group.ZStart}, zEnd: {group.ZEnd}");
-            //Console.WriteLine();
+            k++;
+            Console.Write($"Segment {k} from z: {group.ZStart} to z: {group.ZEnd}, coefficients: ");
+            for (int i = 0; i < group.Coefficients.Length; i++)
+            {  
+                if (i!=0)
+                {
+                    Console.Write(", ");
+                }
+                Console.Write($"c{i+1} = {group.Coefficients[i]:E2}");
+            }
+            Console.WriteLine("");
         }
 
         return groups;
