@@ -2,6 +2,8 @@
 
 XXX
 
+$`\sqrt{3x-1}+(1+x)^2`$
+
 ## How to Run
 
 1. Clone the repository:
