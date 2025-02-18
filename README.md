@@ -50,13 +50,7 @@ Two mathematical segments between \[`0`,`ratio*length`\] and \[`ratio*length`,`l
     ```bash    
     dotnet run
     ```
-
-## Application
-
-The project is easily extendable to any beam, constraint, or loading condition by simply modifying the matrix and solution vector. Remember to group the coefficients into sets of six ($`c_1`$ to $`c_6`$) for each mathematical segment—these coefficients are derived from beam theory by integrating the governing equation four times.
-
-The plotting is automatic; you only need to specify the values for `E`, `I`, and `A`. The coefficients are automatically grouped in sets of six, and you must also provide the sequence of z-coordinates at which the segments are interrupted. See the example for details. 
-
+---
 
 The output is the image [plot.png](https://github.com/multi2mech/simply-supported-beam-edu/blob/6bd93d1dc326fb14b590996f13b45fdf164d1615/plot.png), like the following one as well as text output in the console:
 
@@ -68,3 +62,10 @@ Segment 2 from z: 5 to z: 10, coefficients: c1 = -8.00E+002, c2 = 4.00E+003, c3 
 ```
 
 <img src="https://github.com/multi2mech/simply-supported-beam-edu/blob/6bd93d1dc326fb14b590996f13b45fdf164d1615/plot.png" width="250px" height="auto" />
+
+
+## Application
+
+The project is easily extendable to any beam, constraint, or loading condition by simply modifying the matrix and solution vector. Remember to group the coefficients into sets of six ($`c_1`$ to $`c_6`$) for each mathematical segment—these coefficients are derived from beam theory by integrating the governing equation four times.
+
+The plotting is automatic; you only need to specify the values for `E`, `I`, and `A`. The coefficients are automatically grouped in sets of six, and you must also provide the sequence of z-coordinates at which the segments are interrupted. See the example for details. 
