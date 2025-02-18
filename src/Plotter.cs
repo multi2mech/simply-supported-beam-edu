@@ -8,8 +8,9 @@ using System.IO;
 #nullable enable
 public class PlotHelper
 {
-    public static void PlotFunction(List<ResultsGroup> groups)
+    public static void PlotBeamFunction(List<ResultsGroup> groups)
     {
+        
         ScottPlot.Multiplot multiplot = new();
         double dx = 0.1;
         
@@ -48,7 +49,7 @@ public class PlotHelper
         groups,
         dx,
         computeY: (x, group) => v(x, group), // Specific logic for M
-        title : "v(z)",
+        title : "v",
         yLabel : "v(z)",
         lineColor : Colors.Navy,
         InvertedYAxisQ : true,
@@ -317,6 +318,18 @@ public class PlotHelper
             // Create a group using segment's InitialPosition and FinalPosition
             var group = new ResultsGroup(coefficients, z_list[i], z_list[i+1], E, I, A);
             groups.Add(group);
+        }
+
+        Console.WriteLine("Solution found!");
+        Console.WriteLine(" ");
+
+        foreach (var group in groups)
+        {
+            // Print the solution vector
+            
+            Console.WriteLine($"Da z: {group.ZStart} a z: {group.ZEnd}, coefficienti: {string.Join(", ", group.Coefficients)}");
+            //Console.WriteLine($"zStart: {group.ZStart}, zEnd: {group.ZEnd}");
+            //Console.WriteLine();
         }
 
         return groups;

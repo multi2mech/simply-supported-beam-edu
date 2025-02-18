@@ -7,9 +7,11 @@ public static class MatrixSolver
     public static double[] Solve(double[,] matrix, double[] vector)
     {
 
-
+        Console.WriteLine("M2M beam solver");
+        Console.WriteLine("--------------------------------------------- ");
         // Print the matrix
-        Console.WriteLine("Matrice:");
+        Console.WriteLine("");
+        Console.WriteLine("Matrix:");
         for (int i = 0; i < matrix.GetLength(0); i++)
         {
             Console.Write("        ");
@@ -21,7 +23,8 @@ public static class MatrixSolver
             //Console.Write($"{vector[i]:E2}");
             Console.WriteLine();
         }
-        Console.WriteLine("Vettore:");
+        Console.WriteLine("");
+        Console.WriteLine("Vector:");
         Console.Write("        ");
         foreach (var value in vector)
         {
