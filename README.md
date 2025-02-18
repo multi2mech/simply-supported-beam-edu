@@ -9,6 +9,10 @@ This project lays the foundation for applying structural mechanics and Euler-Ber
 
 $`{d^2\over dz^2}\left(EI{d^2v\over dz^2}\right)=q`$
 
+## Loading scenario
+
+Two mathematical segments between \[`0`,`ratio*length`\] and \[`ratio*length`,`length`\]. Hinge in `0`, roller in `ratio*length` and force in `ratio*length`:
+
 <img src="https://github.com/multi2mech/simply-supported-beam-edu/blob/9b54f5899f587631d48e46bd03442c58cc8505df/extra/beam.gif" width="250px" height="auto" />
 
 
