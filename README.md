@@ -7,7 +7,7 @@ Educational project to investigate the deformation of a simply supported beam un
 
 This project lays the foundation for applying structural mechanics and Euler-Bernoulli beam theory in an augmented reality application (e.g., Unity), which is why it uses C#.
 
-$`{d^2over dz^2}\left(EI{d^2v\over dz^2}\right)=q`$
+$`{d^2\over dz^2}\left(EI{d^2v\over dz^2}\right)=q`$
 
 ## How to Run
 
