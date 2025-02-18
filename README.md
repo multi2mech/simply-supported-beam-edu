@@ -17,7 +17,7 @@ Two mathematical segments between \[`0`,`ratio*length`\] and \[`ratio*length`,`l
 
 ## Prerequisites
  
-- *.NET SDK*. This project is built using .NET. Download and install the latest stable version of the .NET SDK (e.g., .NET 6.0 or later). After cloning the repository, run `dotnet restore` to install the required NuGet packages.
+- *.NET SDK*. This project is built using [.NET. SDK download](https://dotnet.microsoft.com/en-us/download) and install the latest stable version of the .NET SDK (e.g., .NET 6.0 or later). After cloning the repository, run `dotnet restore` to install the required NuGet packages.
 
 - *Visual Studio Code*. For development and debugging, use an IDE that supports C#. If you choose VS Code, install the C# extension by Microsoft. 
 
@@ -34,18 +34,18 @@ Two mathematical segments between \[`0`,`ratio*length`\] and \[`ratio*length`,`l
    git clone https://github.com/yourusername/your-repo.git
    ```
 
-2.	Navigate into the project folder:
+2. Navigate into the project folder:
     ```bash
     cd path/to/your/repo/
     ```
 
-3.	Restore dependencies and build:
+3. Restore dependencies and build:
     ```bash
     dotnet restore
     dotnet build
     ```
 
-4.	Run the project:
+4. Run the project:
     ```bash    
     dotnet run
     ```
