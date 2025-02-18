@@ -58,6 +58,13 @@ The project is easily extendable to any beam, constraint, or loading condition b
 The plotting is automatic; you only need to specify the values for `E`, `I`, and `A`. The coefficients are automatically grouped in sets of six, and you must also provide the sequence of z-coordinates at which the segments are interrupted. See the example for details. 
 
 
-Out is the image [plot.png](https://github.com/multi2mech/simply-supported-beam-edu/blob/6bd93d1dc326fb14b590996f13b45fdf164d1615/plot.png):
+The output is the image [plot.png](https://github.com/multi2mech/simply-supported-beam-edu/blob/6bd93d1dc326fb14b590996f13b45fdf164d1615/plot.png), like the following one as well as text output in the console:
+
+```text
+Solution found!
+ 
+Segment 1 from z: 0 to z: 5, coefficients: c1 = 8.00E+002, c2 = -0.00E+000, c3 = -3.33E+003, c4 = 0.00E+000, c5 = 0.00E+000, c6 = -0.00E+000
+Segment 2 from z: 5 to z: 10, coefficients: c1 = -8.00E+002, c2 = 4.00E+003, c3 = 6.67E+003, c4 = 0.00E+000, c5 = -0.00E+000, c6 = -0.00E+000
+```
 
 <img src="https://github.com/multi2mech/simply-supported-beam-edu/blob/6bd93d1dc326fb14b590996f13b45fdf164d1615/plot.png" width="250px" height="auto" />
