@@ -1,7 +1,6 @@
 # Simply supported beam
 
-### University of Rome Tor Vergata 
-### [Multi2mech](www.multi2mech.com)
+### University of Rome Tor Vergata - [Multi2mech](www.multi2mech.com)
 
 Educational project to investigate the deformation of a simply supported beam under an imposed loading condition.
 
