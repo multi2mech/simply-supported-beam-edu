@@ -13,7 +13,7 @@ $`{d^2\over dz^2}\left(EI{d^2v\over dz^2}\right)=q`$
 Two mathematical segments between \[`0`,`ratio*length`\] and \[`ratio*length`,`length`\]. Hinge in `0`, roller in `ratio*length` and force in `ratio*length`:
 
 <p align="center">
-  <img src="https://github.com/multi2mech/simply-supported-beam-edu/blob/9b54f5899f587631d48e46bd03442c58cc8505df/extra/beam.gif" width="250px" height="auto" />
+  <img src="https://github.com/multi2mech/simply-supported-beam-edu/blob/main/extra/beam.gif?raw=true" width="250px" height="auto" />
 </p>
 
 ## Prerequisites
@@ -61,7 +61,7 @@ Segment 1 from z: 0 to z: 5, coefficients: c1 = 8.00E+002, c2 = -0.00E+000, c3 =
 Segment 2 from z: 5 to z: 10, coefficients: c1 = -8.00E+002, c2 = 4.00E+003, c3 = 6.67E+003, c4 = 0.00E+000, c5 = -0.00E+000, c6 = -0.00E+000
 ```
 
-<img src="https://github.com/multi2mech/simply-supported-beam-edu/blob/main/extra/plot_result.png" width="250px" heiggit add .ht="auto" />
+<img src="https://github.com/multi2mech/simply-supported-beam-edu/blob/main/extra/plot_result.png?raw=true" width="250px" heiggit add .ht="auto" />
 
 
 ## Application
