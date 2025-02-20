@@ -8,6 +8,62 @@ using System.IO;
 #nullable enable
 public class PlotHelper
 {
+
+    // vertical displacement function
+    public static double v(double x, ResultsGroup group)
+    {
+        double c1 = group.c1;
+        double c2 = group.c2;
+        double c3 = group.c3;
+        double c4 = group.c4;
+        double E = group.E;
+        double I = group.I;
+        double qIIIInt = group.qIIIInt;
+        // Example computation using E and I
+        return (1/(E*I)) * (qIIIInt + c1*Math.Pow(x, 3) / 6 + c2*Math.Pow(x, 2) / 2 + c3*x +c4);
+    }
+
+    // horizontal displacement function
+    public static double w(double x, ResultsGroup group)
+    {
+
+        double c5 = group.c5;
+        double c6 = group.c6;
+        double E = group.E;
+        double A = group.A;
+        double qIIIInt = group.qIIIInt;
+        double pIInt = group.pIInt;
+        // Example computation using E and I
+        return -(1/(E*A)) * (pIInt + c5*x + c6);
+    }
+
+    // bending moment function
+    public static double M(double x, ResultsGroup group)
+    {
+        double c1 = group.c1;
+        double c2 = group.c2;
+        double qIInt = group.qIInt;
+        // Example computation using E and I
+        return -  (qIInt + c1*x + c2);
+    }
+
+    // shear force function
+    public static double T(double x, ResultsGroup group)
+    {
+        double c1 = group.c1;
+        double qInt = group.qInt;
+        
+        return -  (qInt + c1);
+    }
+
+    // axial force function
+    public static double N(double x, ResultsGroup group)
+    {
+        double c5 = group.c5;
+        double pInt = group.pInt;
+        
+        return -  (pInt + c5);
+    }
     public static void PlotBeamFunction(List<ResultsGroup> groups)
     {
         
@@ -35,6 +91,8 @@ public class PlotHelper
         multiplot.SavePng(imagePath, 600, 1200); // save the image
         OpenImage(imagePath); // open the image
     }
+
+    
 
     public static void OpenImage(string imagePath){
         Console.WriteLine();
@@ -207,61 +265,7 @@ public class PlotHelper
         return plot;
     }
     
-    // vertical displacement function
-    public static double v(double x, ResultsGroup group)
-    {
-        double c1 = group.c1;
-        double c2 = group.c2;
-        double c3 = group.c3;
-        double c4 = group.c4;
-        double E = group.E;
-        double I = group.I;
-        double qIIIInt = group.qIIIInt;
-        // Example computation using E and I
-        return (1/(E*I)) * (qIIIInt + c1*Math.Pow(x, 3) / 6 + c2*Math.Pow(x, 2) / 3 + c3*x +c4);
-    }
-
-    // horizontal displacement function
-    public static double w(double x, ResultsGroup group)
-    {
-
-        double c5 = group.c5;
-        double c6 = group.c6;
-        double E = group.E;
-        double A = group.A;
-        double qIIIInt = group.qIIIInt;
-        double pIInt = group.pIInt;
-        // Example computation using E and I
-        return -(1/(E*A)) * (pIInt + c5*x + c6);
-    }
-
-    // bending moment function
-    public static double M(double x, ResultsGroup group)
-    {
-        double c1 = group.c1;
-        double c2 = group.c2;
-        double qIInt = group.qIInt;
-        // Example computation using E and I
-        return -  (qIInt + c1*x + c2);
-    }
-
-    // shear force function
-    public static double T(double x, ResultsGroup group)
-    {
-        double c1 = group.c1;
-        double qInt = group.qInt;
-        
-        return -  (qInt + c1);
-    }
-
-    // axial force function
-    public static double N(double x, ResultsGroup group)
-    {
-        double c5 = group.c5;
-        double pInt = group.pInt;
-        
-        return -  (pInt + c5);
-    }
+    
 
     // class to store the results of the solution
     // it allows to group each segment by its 6 coefficients
