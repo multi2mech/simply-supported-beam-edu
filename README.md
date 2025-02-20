@@ -20,9 +20,7 @@ Two mathematical segments between \[`0`,`ratio*length`\] and \[`ratio*length`,`l
  
 - *.NET SDK*. This project is built using [.NET. SDK download](https://dotnet.microsoft.com/en-us/download) and install the latest stable version of the .NET SDK (e.g., .NET 6.0 or later). After cloning the repository, run `dotnet restore` to install the required NuGet packages.
 
-- *Visual Studio Code*. For development and debugging, use an IDE that supports C#. If you choose VS Code, install the C# extension by Microsoft. 
-
-- *Replit* (alrternative IDE). From [replit.com](https://replit.com) clone this repository. 
+- *[Visual Studio Code](https://code.visualstudio.com/download)*. For development and debugging, use an IDE that supports C#. If you choose VS Code, install the [C# Dev Kit](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csdevkit) extension by Microsoft. 
 	
 - *Unity* (Optional). If you plan to integrate or test the AR components, make sure you have Unity installed. See the [AR beam repostory]().
 
@@ -30,26 +28,29 @@ Two mathematical segments between \[`0`,`ratio*length`\] and \[`ratio*length`,`l
 
 ## How to Run
 
-1. Clone the repository:
+1. Download the repository as `.zip` or clone the repository:
    ```bash
    git clone https://github.com/yourusername/your-repo.git
    ```
 
-2. Navigate into the project folder:
+2. Open the project folder inside VSCode:
     ```bash
     cd path/to/your/repo/
     ```
+3. Ensure the [C# Dev Kit](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csdevkit) plugin is installed.
 
-3. Restore dependencies and build:
+3. Restore dependencies and build, from terminal:
     ```bash
     dotnet restore
     dotnet build
     ```
 
-4. Run the project:
+4. Use the run (play) button or the following command to run the project:
     ```bash    
     dotnet run
     ```
+
+
 ---
 
 The output is the image [plot.png](extra/plot_result.png), like the following one as well as text output in the console:
