@@ -20,9 +20,9 @@ Two mathematical segments between \[`0`,`ratio*length`\] and \[`ratio*length`,`l
  
 - *.NET SDK*. This project is built using [.NET. SDK download](https://dotnet.microsoft.com/en-us/download) and install the latest stable version of the .NET SDK (e.g., .NET 6.0 or later). After cloning the repository, run `dotnet restore` to install the required NuGet packages.
 
-- *[Visual Studio Code](https://code.visualstudio.com/download)*. For development and debugging, use an IDE that supports C#. If you choose VS Code, install the [C# Dev Kit](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csdevkit) extension by Microsoft. 
+- *Visual Studio Code* or alternative IDE. For development and debugging, use an IDE that supports C#. If you choose VS Code, [download it](https://code.visualstudio.com/download) and install the [C# Dev Kit](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csdevkit) extension by Microsoft. 
 	
-- *Unity* (Optional). If you plan to integrate or test the AR components, make sure you have Unity installed. See the [AR beam repostory]().
+- *Unity* (Optional). If you plan to integrate or test the AR components, make sure you have Unity installed. See the [AR beam repostory](https://github.com/multi2mech/AR-simply-supported-beam-edu).
 
 - Any additional libraries referenced in the project file (`.csproj`) will be restored automatically via dotnet restore.
 
