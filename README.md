@@ -2,6 +2,8 @@
 
 ### University of Rome Tor Vergata - [Multi2mech](www.multi2mech.com)
 
+Discover the version with the [Augmented Reality here](https://multi2mech.github.io/AR-simply-supported-beam-edu/).
+
 Educational project to investigate the deformation of a simply supported beam under an imposed loading condition.
 
 This project lays the foundation for applying structural mechanics and Euler-Bernoulli beam theory in an augmented reality application (e.g., Unity), which is why it uses C#.
