@@ -44,7 +44,7 @@ public class PlotHelper
         double c2 = group.c2;
         double qIInt = group.qIInt;
         // Example computation using E and I
-        return -  (qIInt + c1*x + c2);
+        return x;
     }
 
     // shear force function
