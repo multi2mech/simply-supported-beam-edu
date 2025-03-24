@@ -14,7 +14,7 @@ class Program
 
         double length = 10;              // beam length
 
-        double ratio = 0.3;             // roller position ratio
+        double ratio = 0.5;             // roller position ratio
         double zF_s0 = ratio * length;  // roller position
         
         double load_ratio = 0.7;
