@@ -14,16 +14,19 @@ class Program
 
         double length = 10;              // beam length
 
-        double ratio = 0.5;             // roller position ratio
+        double ratio = 0.3;             // roller position ratio
         double zF_s0 = ratio * length;  // roller position
         
-        double zF_s1 = length - zF_s0;          // force position
+        double load_ratio = 0.7;
+        double zF_s1 = length*load_ratio - zF_s0;          // local force position
         double force = 8E2;
+
+        double zF_s2 = length - zF_s0 - zF_s1;          // free extremity position
 
         double[] absolutePositions = new double[] {0, ratio*length, length}; // absolute position for the mathematical segment splitting
 
-        int numRows = 12;   // define rows of the matrix
-        int numCols = 12;   // define columns of the matrix
+        int numRows = 18;   // define rows of the matrix
+        int numCols = 18;   // define columns of the matrix
         
         
 
