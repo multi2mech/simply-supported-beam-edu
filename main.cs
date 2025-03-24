@@ -38,7 +38,7 @@ class Program
         // Delta_w() = w_s1(0) - w_s0(zF_s0) = 0
         double[] row5 = { 0, 0, 0, 0, -(-1/(E*A)) *zF_s0,  -(-1/(E*A)), 0, 0, 0, 0, 0, -1/(E*A) };
         // Delta_phi() = phi_s1(0) - phi_s0(zF_s0) = 0
-        double[] row6 = { -(1/(E*I))*Math.Pow(zF_s0,2)/2, -(1/(E*I))*zF_s0, (1/(E*I)), 0, 0, 0, 0, 0,  -1/(E*I), 0, 0, 0 };
+        double[] row6 = { (1/(E*I))*Math.Pow(zF_s0,2)/2, (1/(E*I))*zF_s0, (1/(E*I)), 0, 0, 0, 0, 0,  -1/(E*I), 0, 0, 0 };
         // Delta_v() = v_s1(0) - v_s0(zF_s0) = 0
         double[] row7 = {-(1/(E*I))*Math.Pow(zF_s0,3)/6, -(1/(E*I))*Math.Pow(zF_s0,2)/2, -(1/(E*I))*zF_s0,  -(1/(E*I)), 0, 0, 0, 0, 0,  1/(E*I), 0, 0 };
         // Delta_M() = M_s1(0) - M_s0(zF_s0) = 0
