@@ -1,6 +1,6 @@
 # Simply supported beam
 
-### University of Rome Tor Vergata - [Multi2mech](www.multi2mech.com)
+### University of Rome Tor Vergata - [Multi2mech](https://www.multi2mech.com)
 
 Discover the version with the [Augmented Reality here](https://multi2mech.github.io/AR-simply-supported-beam-edu/).
 
