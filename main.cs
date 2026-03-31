@@ -29,26 +29,32 @@ class Program
         int numCols = 18;   // define columns of the matrix
         
         
+        double[] row1 = {0, 0, 0, 1/(E*I), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}; // w1(0)=0
+        double[] row2 = {0, 0, 0, 0, 0, -1/(E*A), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}; // v1(0)=0
+        double[] row3 = {0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};       // M1(0)=0
 
-        
-        double[] row1 = {0, 0, 0, 1/(E*I), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-        double[] row2 = {0, 0, 0, 0, 0, -1/(E*A), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-        double[] row3 = {0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-        double[] row4 = {1/(E*I)*Math.Pow(zF_s0,3)/6, 1/(E*I)*Math.Pow(zF_s0,2)/2, 1/(E*I)*zF_s0, 1/(E*I), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-        double[] row5 = {0, 0, 0, 0, 1/(E*A)*zF_s0, 1/(E*A), 0, 0, 0, 0, 0, -1/(E*A), 0, 0, 0, 0, 0, 0};
-        double[] row6 = {1/(E*I)*Math.Pow(zF_s0,2)/2, 1/(E*I)*zF_s0, 1/(E*I), 0, 0, 0, 0, 0, -1/(E*I), 0, 0, 0, 0, 0, 0, 0, 0, 0};
-        double[] row7 = {-1/(E*I)*Math.Pow(zF_s0,3)/6, -1/(E*I)*Math.Pow(zF_s0,2)/2, -1/(E*I)*zF_s0, -1/(E*I), 0, 0, 0, 0, 0, 1/(E*I), 0, 0, 0, 0, 0, 0, 0, 0};
-        double[] row8 = {1*zF_s0, 1, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-        double[] row9 = {0, 0, 0, 0, 1, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0};
-        double[] row10 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1/(E*A)*zF_s1, 1/(E*A), 0, 0, 0, 0, 0, -1/(E*A)};
-        double[] row11 = {0, 0, 0, 0, 0, 0, 1/(E*I)*Math.Pow(zF_s1,2)/2, 1/(E*I)*zF_s1, 1/(E*I), 0, 0, 0, 0, 0, -1/(E*I), 0, 0, 0};
-        double[] row12 = {0, 0, 0, 0, 0, 0, -1/(E*I)*Math.Pow(zF_s1,3)/6, -1/(E*I)*Math.Pow(zF_s1,2)/2, -1/(E*I)*zF_s1, -1/(E*I), 0, 0, 0, 0, 0, 1/(E*I), 0, 0};
-        double[] row13 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, -1, 0};
-        double[] row14 = {0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0};
-        double[] row15 = {0, 0, 0, 0, 0, 0, 1*zF_s1, 1, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0};
-        double[] row16 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0};
-        double[] row17 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0};
-        double[] row18 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1*zF_s2, -1, 0, 0, 0, 0};
+        double[] row4 = {0, 0, 0, 0, 1/(E*A)*zF_s0, 1/(E*A), 0, 0, 0, 0, 0, -1/(E*A), 0, 0, 0, 0, 0, 0}; // v cont. at zF_s0
+        double[] row5 = {1/(E*I)*Math.Pow(zF_s0,2)/2, 1/(E*I)*zF_s0, 1/(E*I), 0, 0, 0, 0, 0, -1/(E*I), 0, 0, 0, 0, 0, 0, 0, 0, 0}; // phi cont. at zF_s0
+        double[] row6 = {-1/(E*I)*Math.Pow(zF_s0,3)/6, -1/(E*I)*Math.Pow(zF_s0,2)/2, -1/(E*I)*zF_s0, -1/(E*I), 0, 0, 0, 0, 0, 1/(E*I), 0, 0, 0, 0, 0, 0, 0, 0}; // w cont. at zF_s0
+        double[] row7 = {1/(E*I)*Math.Pow(zF_s0,2)/2, 1/(E*I)*zF_s0, 1/(E*I), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}; // phi(zF_s0)=0
+        double[] row8 = {1, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}; // T cont. at zF_s0
+        double[] row9 = {0, 0, 0, 0, 1, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0}; // N cont. at zF_s0
+
+        double[] row10 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1/(E*A)*zF_s1, 1/(E*A), 0, 0, 0, 0, 0, -1/(E*A)}; // v cont. at load
+        double[] row11 = {0, 0, 0, 0, 0, 0, 1/(E*I)*Math.Pow(zF_s1,2)/2, 1/(E*I)*zF_s1, 1/(E*I), 0, 0, 0, 0, 0, -1/(E*I), 0, 0, 0}; // phi cont. at load
+        double[] row12 = {0, 0, 0, 0, 0, 0, -1/(E*I)*Math.Pow(zF_s1,3)/6, -1/(E*I)*Math.Pow(zF_s1,2)/2, -1/(E*I)*zF_s1, -1/(E*I), 0, 0, 0, 0, 0, 1/(E*I), 0, 0}; // w cont. at load
+        double[] row13 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, -1, 0}; // N cont. at load
+        double[] row14 = {0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0}; // T jump at load
+        double[] row15 = {0, 0, 0, 0, 0, 0, 1*zF_s1, 1, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0}; // M cont. at load
+
+        double[] row16 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1/(E*A)*zF_s2, 1/(E*A)}; // v3(zF_s2)=0
+        double[] row17 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1*zF_s2, -1, 0, 0, 0, 0}; // M3(zF_s2)=0
+        double[] row18 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                        1/(E*I)*Math.Pow(zF_s2,3)/6,
+                        1/(E*I)*Math.Pow(zF_s2,2)/2,
+                        1/(E*I)*zF_s2,
+                        1/(E*I),
+                        0, 0}; // w3(zF_s2)=0
 
 
         // Set rows collection for the matrix
@@ -60,9 +66,11 @@ class Program
         // define the vector
         double[] vector = new double[]
         {
-           0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -force, 0, 0, 0, 0
+            0, 0, 0,
+            0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, -force, 0,
+            0, 0, 0
         };
-
         
         // reshape the matrix from [][] to [,]
         double[,] matrix = new double[numRows, numCols];
